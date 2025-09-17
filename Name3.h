@@ -2,7 +2,7 @@
 #define NAME3_H
 #include "Users.h"
 
-class Name3:public{
+class Name3: public Users{
 
 };
 
