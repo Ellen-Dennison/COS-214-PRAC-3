@@ -4,7 +4,18 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "ChatRoom.cpp": true,
+        "Command.cpp": true,
+        "LogMessageCommand.cpp": true,
+        "SendMessageCommand.cpp": true,
+        "Users.cpp": true
     },
-    "hide-files.files": []
+    "hide-files.files": [
+        "ChatRoom.cpp",
+        "Command.cpp",
+        "LogMessageCommand.cpp",
+        "SendMessageCommand.cpp",
+        "Users.cpp"
+    ]
 }
