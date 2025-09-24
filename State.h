@@ -2,13 +2,22 @@
 #define STATE_H
 
 #include "Users.h"
-#include<string>
-#include<iostream>
+#include "ChatRoom.h"
+
+#include <string>
+#include <iostream>
+#include <vector>
 
 class State
 {
-  private:
+  protected:
+  std::vector <ChatRoom*> chatRooms;
+  std::string name;
+  
   public:
+  void send(std::string message, ChatRoom room);
+  void receive(std::string message, Users fromUser, ChatRoom room);
+    
 };
 
 #endif STATE_H
