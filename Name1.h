@@ -2,8 +2,9 @@
 #define NAME1_H
 #include "Users.h"
 
-class Name1:public Users{
-
+class Name1 : public Users {
+public:
+    Name1(const std::string& userName);
 };
 
 #endif
