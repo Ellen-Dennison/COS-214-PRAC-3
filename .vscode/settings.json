@@ -4,9 +4,24 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "Users.cpp": true,
+        "ChatRoom.h": true,
+        "OfflineState.h": true,
+        "OnlineState.h": true,
+        "State.h": true,
+        "Users.h": true,
+        "makefile": true
     },
-    "hide-files.files": [],
+    "hide-files.files": [
+        "Users.cpp",
+        "ChatRoom.h",
+        "OfflineState.h",
+        "OnlineState.h",
+        "State.h",
+        "Users.h",
+        "makefile"
+    ],
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",

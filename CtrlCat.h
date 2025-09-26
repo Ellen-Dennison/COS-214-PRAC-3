@@ -13,9 +13,9 @@ class CtrlCat : public ChatRoom
     std::vector <std::string*> chatHistory;
 
     public:
-    virtual void registerUser(Users user);
-    virtual void sendMessage(std::string message, Users fromUser);
-    virtual void saveMessage(std::string message, Users user) ;
+    virtual void registerUser(Users *user);
+    virtual void sendMessage(std::string message, Users *fromUser);
+    virtual void saveMessage(std::string message, Users *user) ;
     virtual void removeUser(Users user);
 
 };

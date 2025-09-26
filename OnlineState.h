@@ -10,8 +10,8 @@ class OnlineState:public State
   std::string name;
   
   public:
-  void send(std::string message, ChatRoom room);
-  void receive(std::string message, Users fromUser, ChatRoom room);
+  virtual void send(std::string message, ChatRoom *room);
+  virtual void receive(std::string message, Users *fromUser, ChatRoom *room);
 
   
 };
