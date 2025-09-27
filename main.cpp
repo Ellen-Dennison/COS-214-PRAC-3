@@ -5,6 +5,8 @@
 #include "Name1.h"
 #include "Name2.h"
 #include "Name3.h"
+#include "OfflineState.h"
+#include "OnlineState.h"
 #include<string>
 #include<iostream>
 using namespace std;
@@ -127,4 +129,32 @@ int main(){
     delete user3;
     delete user4;
     delete user5;
+
+    cout<<"-------------------------------------------------------STATE TEST------------------------------------------------------------------------------------\n";
+    
+    Users *u1 =  new Name1("Hope");
+    Users *u2 =  new Name1("Ellen");
+    ChatRoom* c1 = new CtrlCat;
+    State *s1 = new OfflineState;
+    
+    u1->joinChatRoom(c1);
+    u2->joinChatRoom(c1);
+    u1->send("Hello everyone", c1);
+    
+    //STATE TEST 
+    s1->setUser(u2);
+    s1->send("Hello Me",c1);
+    
+    //USERS OLD MESSAGES SENT FIRST
+    delete s1;
+    s1 = new OnlineState;
+    s1->setUser(u2);
+    s1->send("Will my message be sent",c1);
+
+
+    delete u1, u2, c1, s1;
+    return 0;
+
+
+
 }
