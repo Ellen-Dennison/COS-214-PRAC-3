@@ -10,6 +10,7 @@ class ChatRoom{
     protected:
             std::vector<Users>* users;//pointer to vector of Users objects
             std::vector<std::string>* chatHistory; //pointer to vector of strings
+            
     public:
             virtual void registerUser(Users user) = 0;
             virtual void removeUser(Users user) = 0;

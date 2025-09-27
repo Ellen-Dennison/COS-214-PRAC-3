@@ -2,18 +2,22 @@
 #define USERS_H
 //#include "Command.h"
 #include "ChatRoom.h"
+#include "State.h"
 #include<string>
 #include<vector>
 
 class ChatRoom;
+class State;
 //class Command;
 
-class Users{
-    protected:
+class Users
+{
+        protected:
               std::vector<ChatRoom*>* chatRooms; //pointer to vector of chatRoom pointers
               std::string name;
+              State *newState;
               //std::vector<Command*>* commandQueue;//pointer to vector of command pointers
-    public:
+        public:
              Users(const std::string& userName);
              Users(const Users& other);
              virtual ~Users();
@@ -30,5 +34,7 @@ class Users{
              const std::vector<ChatRoom*>& getChatRooms() const;
              bool isInChatRoom(ChatRoom* room) const;
              Users& operator=(const Users& other);
+
+             void setState(State *setState);
 };
 #endif

@@ -1,17 +1,20 @@
 #include "Users.h"
 #include<iostream>
 
-Users::Users(const std::string& userName) : name(userName) { 
+Users::Users(const std::string& userName) : name(userName) 
+{ 
         chatRooms = new std::vector<ChatRoom*>();
         //commandQueue = new std::vector<Command*>();
 }
 
-Users::~Users() {
+Users::~Users() 
+{       
         delete chatRooms;
         //delete commandQueue;
 }
 
-Users::Users(const Users& other) : name(other.name) {
+Users::Users(const Users& other) : name(other.name) 
+{
     chatRooms = new std::vector<ChatRoom*>();
     // Copy all chatroom pointers from the other user
     for (size_t i = 0; i < other.chatRooms->size(); i++) {
@@ -23,9 +26,13 @@ Users::Users(const Users& other) : name(other.name) {
         return name == other.name;
 }
 
-void Users::send(const std::string& message, ChatRoom* room) {
+//!----------------------------------------------------------------------------------------------------------------------/
+
+void Users::send(const std::string& message, ChatRoom* room) 
+{
     // Check if user is in the chat room
-    if (!isInChatRoom(room)) {
+    if (!isInChatRoom(room)) 
+    {
         std::cout << name << " cannot send message - not in this chat room!" << std::endl;
         return;
     }
@@ -33,12 +40,18 @@ void Users::send(const std::string& message, ChatRoom* room) {
     room->sendMessage(message, *this);
 }
 
-void Users::receive(const std::string& message, Users fromUser, ChatRoom* room) {
-    std::cout << name << " received from " << fromUser.getName() 
-              << " in chat room: " << message << std::endl;
+void Users::receive(const std::string& message, Users fromUser, ChatRoom* room) 
+{
+    std::cout << name << " received from " << fromUser.getName() << " in chat room: " << message << std::endl;
 }
 
-void Users::joinChatRoom(ChatRoom* room) {
+
+
+
+//!----------------------------------------------------------------------------------------------------------------------/
+
+void Users::joinChatRoom(ChatRoom* room) 
+{
     // Check if user is already in this chat room
     for (size_t i = 0; i < chatRooms->size(); i++) {
         if ((*chatRooms)[i] == room) {
@@ -52,7 +65,8 @@ void Users::joinChatRoom(ChatRoom* room) {
     std::cout << name << " joined chat room!" << std::endl;
 }
 
-void Users::leaveChatRoom(ChatRoom* room) {
+void Users::leaveChatRoom(ChatRoom* room) 
+{
     for (size_t i = 0; i < chatRooms->size(); i++) {
         if ((*chatRooms)[i] == room) {
             chatRooms->erase(chatRooms->begin() + i);
@@ -97,3 +111,6 @@ bool Users::isInChatRoom(ChatRoom* room) const {
 const std::vector<ChatRoom*>& Users::getChatRooms() const{
     return *chatRooms;
 }
+
+void Users::setState(State *setState)
+{ this->newState = setState; }
