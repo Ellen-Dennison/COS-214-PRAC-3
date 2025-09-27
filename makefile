@@ -14,6 +14,8 @@ coverage:
 	./main
 	gcov *.cpp
 
+valgrind:
+	valgrind --leak-check=yes --track-origins=yes ./main
     
 clean:
 	rm *.o *.gcno *.gcda *.gcov main

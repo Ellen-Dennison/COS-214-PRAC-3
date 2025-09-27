@@ -4,10 +4,24 @@
 
 void OnlineState::send(std::string message, ChatRoom *room)
 {
+    if (!user->isInChatRoom(room)) 
+    {
+        std::cout << name << " cannot send message - not in this chat room!" << std::endl;
+        return;
+    }
+
+    std::vector <string> c1 = room->getChatHistory();
+    for (int i = 0; i < c1.size(); i++)
+    {
+       if (user->getName().compare(c1[i]))
+       {
+         std::cout << "sending your drafts\n";
+         room->sendMessage(c1[i], *user);
+       }
+    }
+    
+    std::cout << name << " sending message to chat room: " << message << std::endl;
+    room->sendMessage(message, *user);
 
 }
 
-void OnlineState::receive(std::string message, Users *fromUser, ChatRoom *room)
-{
-
-}
