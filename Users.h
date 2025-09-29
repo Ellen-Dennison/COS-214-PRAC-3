@@ -10,12 +10,22 @@ class ChatRoom;
 class State;
 //class Command;
 
+
+/** 
+* @file Users.h
+* @brief  This is the Users classs
+* @details This file is where the Users class functions are defined  
+* @author Nomzi Phosa
+* @date  10/09/2025 - 29/09/2025
+*   
+ */
+
 class Users
 {
         protected:
               std::vector<ChatRoom*>* chatRooms; //pointer to vector of chatRoom pointers
-              std::string name;
-              State *newState;
+              std::string name; //the string containing the users name 
+              State *newState;//the pointer to the state of the user 
               //std::vector<Command*>* commandQueue;//pointer to vector of command pointers
         public:
              Users(const std::string& userName);

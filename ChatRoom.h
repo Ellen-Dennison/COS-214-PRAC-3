@@ -5,6 +5,15 @@
 using namespace std;
 #include<vector>
 
+/** 
+* @file ChatRoom.h
+* @brief  This is the ChatRoom classs
+* @details This file is where the ChatRoom class functions are defined  
+* @author Nomzi Phosa
+* @date  10/09/2025 - 29/09/2025
+*   
+ */
+
 class Users;
 class ChatRoom{
     protected:
