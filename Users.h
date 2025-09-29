@@ -15,6 +15,7 @@ class Users
         protected:
               std::vector<ChatRoom*>* chatRooms; //pointer to vector of chatRoom pointers
               std::string name;
+              State *newState;
               std::vector<Command*>* commandQueue;//pointer to vector of command pointers
     public:
              Users(const std::string& userName);
