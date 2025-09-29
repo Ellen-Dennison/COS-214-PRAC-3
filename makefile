@@ -1,5 +1,5 @@
 main: *.o
-	g++ -std=c++98 -o main *.o
+	g++ -std=c++11 -o main *.o
 
 *.o: *.cpp
 	g++ -c *.cpp

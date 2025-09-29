@@ -63,7 +63,7 @@ size_t ChatRoom::getMessageCount(){
     return chatHistory->size();
 }
 
-bool ChatRoom::hasUser(Users* user){              // Changed parameter
+bool ChatRoom::hasUser(Users* user){        // Changed parameter
     for (size_t i = 0; i < users->size(); i++) {
         if ((*users)[i] == user) {                // Compare pointers
             return true;

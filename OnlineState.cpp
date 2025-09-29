@@ -18,10 +18,14 @@ void OnlineState::send(std::string message, ChatRoom *room)
          std::cout << "sending your drafts\n";
          room->sendMessage(c1[i], user);
        }
+       if (message.compare(c1[i]) != 0) 
+       {
+         std::cout << name << " sending message to chat room: " << message << std::endl;
+         room->sendMessage(message, user);
+       }
     }
     
-    std::cout << name << " sending message to chat room: " << message << std::endl;
-    room->sendMessage(message, user);
+    
 
 }
 
