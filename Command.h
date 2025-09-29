@@ -8,8 +8,8 @@
 
 class Command
 {
-    private:
-    ChatRoom room;
+    protected:
+    ChatRoom *room;
     std::string message;
     Users fromUser;
     
