@@ -16,12 +16,12 @@ void OnlineState::send(std::string message, ChatRoom *room)
        if (user->getName().compare(c1[i]))
        {
          std::cout << "sending your drafts\n";
-         room->sendMessage(c1[i], *user);
+         room->sendMessage(c1[i], user);
        }
     }
     
     std::cout << name << " sending message to chat room: " << message << std::endl;
-    room->sendMessage(message, *user);
+    room->sendMessage(message, user);
 
 }
 

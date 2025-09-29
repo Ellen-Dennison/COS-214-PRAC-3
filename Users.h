@@ -1,6 +1,5 @@
 #ifndef USERS_H
 #define USERS_H
-//#include "Command.h"
 #include "ChatRoom.h"
 #include "State.h"
 #include<string>
@@ -8,7 +7,7 @@
 
 class ChatRoom;
 class State;
-//class Command;
+class Command;
 
 class Users
 {
@@ -25,7 +24,7 @@ class Users
              
              // Make parameters const to match your implementation
              void send(const std::string& message, ChatRoom* room);
-             void receive(const std::string& message, Users fromUser, ChatRoom* room);
+             void receive(const std::string& message, Users& fromUser, ChatRoom* room);  // Changed to Users&
              void addCommand(Command* command);
              void executeAll();
              void joinChatRoom(ChatRoom*);

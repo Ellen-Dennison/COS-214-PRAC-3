@@ -10,6 +10,6 @@ void OfflineState::send(std::string message,ChatRoom *room)
         return;
     }
     std::cout << name << "saving message. Message will be sent when user is online\n" << message << std::endl;
-    room->saveMessage(message, *user);    
+    room->saveMessage(message, user);    
 }
 
