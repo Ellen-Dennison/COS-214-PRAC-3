@@ -1,5 +1,5 @@
-#ifndef COMMAND
-#define COMMAND
+#ifndef COMMAND_H
+#define COMMAND_H
 
 #include <iostream>
 #include <vector>
@@ -15,6 +15,7 @@ class Command
     
     public:
     virtual void execute() = 0;
+    Command(ChatRoom *room, std::string message, Users fromUser);
 };
 
 #endif

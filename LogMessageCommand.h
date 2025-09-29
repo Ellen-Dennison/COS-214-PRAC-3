@@ -1,5 +1,5 @@
-#ifndef LOGMESSAGECOMMAND
-#define LOGMESSAGECOMMAND
+#ifndef LOGMESSAGECOMMAND_H
+#define LOGMESSAGECOMMAND_H
 #include "Command.h"
 
 
