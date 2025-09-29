@@ -12,7 +12,7 @@ class Users{
     protected:
               std::vector<ChatRoom*>* chatRooms; //pointer to vector of chatRoom pointers
               std::string name;
-              //std::vector<Command*>* commandQueue;//pointer to vector of command pointers
+              std::vector<Command*>* commandQueue;//pointer to vector of command pointers
     public:
              Users(const std::string& userName);
              Users(const Users& other);
@@ -22,7 +22,7 @@ class Users{
              // Make parameters const to match your implementation
              void send(const std::string& message, ChatRoom* room);
              void receive(const std::string& message, Users fromUser, ChatRoom* room);
-             //void addCommand(Command* command);
+             void addCommand(Command* command);
              void executeAll();
              void joinChatRoom(ChatRoom*);
              void leaveChatRoom(ChatRoom*);
