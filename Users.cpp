@@ -1,16 +1,22 @@
 #include "Users.h"
-#include<iostream>
+#include "Command.h"
+#include "SendMessageCommand.h"
+#include "SaveMessageCommand.h"
+#include <iostream>
 
 Users::Users(const std::string& userName) : name(userName) 
 { 
         chatRooms = new std::vector<ChatRoom*>();
-        //commandQueue = new std::vector<Command*>();
+        commandQueue = new std::vector<Command*>();
 }
 
 Users::~Users() 
 {       
+        for (size_t i = 0; i < commandQueue->size(); i++) {
+        delete (*commandQueue)[i];
+    }
         delete chatRooms;
-        //delete commandQueue;
+        delete commandQueue;
 }
 
 Users::Users(const Users& other) : name(other.name) 
@@ -28,31 +34,33 @@ Users::Users(const Users& other) : name(other.name)
 
 //!----------------------------------------------------------------------------------------------------------------------/
 
-void Users::send(const std::string& message, ChatRoom* room) 
-{
-    // Check if user is in the chat room
-    if (!isInChatRoom(room)) 
-    {
+void Users::send(const std::string& message, ChatRoom* room) {
+    if (!isInChatRoom(room)) {
         std::cout << name << " cannot send message - not in this chat room!" << std::endl;
         return;
     }
-    std::cout << name << " sending message to chat room: " << message << std::endl;
-    room->sendMessage(message, *this);
+    
+    // Create commands - pass 'this' pointer instead of '*this'
+    Command* sendCmd = new SendMessageCommand(room, message, this);
+    Command* saveCmd = new SaveMessageCommand(room, message, this);
+    
+    // Add to queue
+    addCommand(sendCmd);
+    addCommand(saveCmd);
+    
+    // Execute all
+    executeAll();
 }
 
-void Users::receive(const std::string& message, Users fromUser, ChatRoom* room) 
+void Users::receive(const std::string& message, Users& fromUser, ChatRoom* room) 
 {
     std::cout << name << " received from " << fromUser.getName() << " in chat room: " << message << std::endl;
 }
-
-
-
 
 //!----------------------------------------------------------------------------------------------------------------------/
 
 void Users::joinChatRoom(ChatRoom* room) 
 {
-    // Check if user is already in this chat room
     for (size_t i = 0; i < chatRooms->size(); i++) {
         if ((*chatRooms)[i] == room) {
             std::cout << name << " is already in this chat room!" << std::endl;
@@ -61,7 +69,7 @@ void Users::joinChatRoom(ChatRoom* room)
     }
     
     chatRooms->push_back(room);
-    room->registerUser(*this);
+    room->registerUser(this);  // Pass 'this' pointer
     std::cout << name << " joined chat room!" << std::endl;
 }
 
@@ -70,7 +78,7 @@ void Users::leaveChatRoom(ChatRoom* room)
     for (size_t i = 0; i < chatRooms->size(); i++) {
         if ((*chatRooms)[i] == room) {
             chatRooms->erase(chatRooms->begin() + i);
-            room->removeUser(*this);
+            room->removeUser(this);  // Pass 'this' pointer
             std::cout << name << " left chat room!" << std::endl;
             return;
         }
@@ -78,23 +86,21 @@ void Users::leaveChatRoom(ChatRoom* room)
     std::cout << name << " is not in this chat room!" << std::endl;
 }
 
-/*void Users::addCommand(Command* command) {
+void Users::addCommand(Command* command) {
     commandQueue->push_back(command);
-}*/
+}
 
-/*void Users::executeAll() {
+void Users::executeAll() {
     for (size_t i = 0; i < commandQueue->size(); i++) {
         (*commandQueue)[i]->execute();
+        delete (*commandQueue)[i];  // Delete after executing
     }
-    commandQueue->clear();
-}*/
+    commandQueue->clear();  // Now safe to clear the vector
+}
 
-// Assignment operator - ADD THIS
 Users& Users::operator=(const Users& other) {
     if (this != &other) {
         name = other.name;
-        // Don't copy chatRooms to avoid circular references
-        // Keep the existing chatRooms vector
     }
     return *this;
 }

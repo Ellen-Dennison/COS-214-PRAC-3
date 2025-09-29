@@ -1,4 +1,5 @@
 #include "ChatRoom.h"
+#include "Users.h"  // Add this include
 using namespace std;
 #include<string>
 
@@ -10,7 +11,7 @@ using namespace std;
  * @return -
  */
 ChatRoom::ChatRoom(){
-    users = new std::vector<Users>();
+    users = new std::vector<Users*>();      // Changed to Users*
     chatHistory = new std::vector<string>();
 }
 
@@ -32,7 +33,7 @@ ChatRoom::~ChatRoom(){
  * @details This function returns a pointer to the user vector 
  * @return a pointer to the users vector 
  */
-const std::vector<Users>& ChatRoom::getUsers(){
+const std::vector<Users*>& ChatRoom::getUsers(){  // Changed return type
     return *users;
 }
 
@@ -62,9 +63,9 @@ size_t ChatRoom::getMessageCount(){
     return chatHistory->size();
 }
 
-bool ChatRoom::hasUser(Users user){
+bool ChatRoom::hasUser(Users* user){              // Changed parameter
     for (size_t i = 0; i < users->size(); i++) {
-        if ((*users)[i] == user) {
+        if ((*users)[i] == user) {                // Compare pointers
             return true;
         }
     }
