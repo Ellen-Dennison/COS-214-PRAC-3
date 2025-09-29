@@ -15,6 +15,7 @@ ChatRoom::ChatRoom(){
     chatHistory = new std::vector<string>();
 }
 
+
 /** 
  * @brief ChatRoom destructor
  * @param - 
@@ -50,19 +51,31 @@ const std::vector<std::string>& ChatRoom::getChatHistory(){
 
 
 /** 
- * @brief function to get the user vector
+ * @brief function to get the users vector size 
  * @param - 
- * @details This function returns a pointer to the user vector 
- * @return a pointer to the users vector 
+ * @details This function returns the size of the users vector 
+ * @return size of the users vector 
  */
 size_t ChatRoom::getUserCount(){
     return users->size();
 }
 
+/** 
+ * @brief function to get the chatHistory vector size
+ * @param - 
+ * @details This function returns the size of the chatHistory vector 
+ * @return size of the chatHistory vector  
+ */
 size_t ChatRoom::getMessageCount(){ 
     return chatHistory->size();
 }
 
+/** 
+ * @brief function to get check if a user is in the users vector
+ * @param a pointer to a user object  
+ * @details This function checks if a user is within the users vector and returns true if the user is found 
+ * @return boolean value  
+ */
 bool ChatRoom::hasUser(Users* user){        // Changed parameter
     for (size_t i = 0; i < users->size(); i++) {
         if ((*users)[i] == user) {                // Compare pointers
