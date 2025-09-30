@@ -1,5 +1,7 @@
 #include "ChatRoom.h"
 #include "Users.h"  // Add this include
+#include "Iterator.h"
+
 using namespace std;
 #include<string>
 

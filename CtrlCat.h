@@ -1,6 +1,7 @@
 #ifndef CTRLCAT_H
 #define CTRLCAT_H
 #include "ChatRoom.h"
+#include "UserIterator.h"
 
 /** 
 * @file CtrlCat.h
@@ -20,6 +21,7 @@ public:
     virtual void removeUser(Users* user);        // Changed to Users*
     virtual void sendMessage(string message, Users* fromUser);    // Changed to Users*
     virtual void saveMessage(string message, Users* fromUser);    // Changed to Users*
+    virtual Iterator* createIterator(); //iterator
 };
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef DOGORITHM_H
 #define DOGORITHM_H
 #include "ChatRoom.h"
+#include "UserIterator.h"
+
 /** 
 * @file Dogorithm.h
 * @brief  This is the Dogorithm classs
@@ -18,6 +20,7 @@ public:
     virtual void removeUser(Users* user);
     virtual void sendMessage(string message, Users* fromUser);
     virtual void saveMessage(string message, Users* fromUser);
+    virtual Iterator* createIterator(); //iterator
 };
 
 #endif

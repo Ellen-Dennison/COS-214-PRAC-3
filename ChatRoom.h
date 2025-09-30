@@ -3,6 +3,8 @@
 #include<string>
 #include<vector>
 using namespace std;
+#include "Iterator.h"
+class Iterator;
 
 /** 
 * @file ChatRoom.h
@@ -18,7 +20,7 @@ class Users;
 class ChatRoom{
     protected:
         std::vector<Users*>* users;         // Changed to Users* (pointers)
-        std::vector<string>* chatHistory;
+        std::vector<string>* chatHistory; 
     public:
         ChatRoom();
         virtual ~ChatRoom();
@@ -33,5 +35,6 @@ class ChatRoom{
         size_t getUserCount();
         size_t getMessageCount();
         bool hasUser(Users* user);                       // Changed to Users*
+        virtual Iterator* createIterator() = 0; 
 };
 #endif

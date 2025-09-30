@@ -38,3 +38,9 @@ void Dogorithm::saveMessage(string message, Users* fromUser) {
     chatHistory->push_back(fullMessage);
     std::cout << "[Dogorithm] Message saved to history" << std::endl;
 }
+
+
+Iterator* Dogorithm::createIterator()
+{
+  return new UserIterator(users);
+}

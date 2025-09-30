@@ -38,3 +38,9 @@ void CtrlCat::saveMessage(string message, Users* fromUser) {
     chatHistory->push_back(fullMessage);
     std::cout << "[CtrlCat] Message saved to history" << std::endl;
 }
+
+
+Iterator* CtrlCat::createIterator()
+{
+  return new UserIterator(users);
+}
